@@ -1,8 +1,0 @@
-[gd_scene load_steps=4 format=2]
-
-[ext_resource path="res://scripts/dynamic_circle.gd" type="Script" id=1]
-
-[node name="DynamicCircle" type="Node2D"]
-position = Vector2( 0, 1 )
-script = ExtResource( 1 )
-fill_color = Color( 0, 0, 0, 0.588235 )
