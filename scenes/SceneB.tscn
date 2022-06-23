@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/circle_tracing_demo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ui/CTV_hud.tscn" type="PackedScene" id=2]
+
+[node name="DemoSceneB" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CircleTracingVisualizationHUD" parent="." instance=ExtResource( 2 )]
+next_scene = "res://scenes/SceneA.tscn"
+
+[node name="CircleTracingDemo" parent="." instance=ExtResource( 1 )]
+z_index = -1

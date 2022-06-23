@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/ray_projector.gd" type="Script" id=1]
+[ext_resource path="res://scenes/elements/obstacle_scene.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RayProjector:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -0.5 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("RayProjector")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "TraceAnim"
+length = 14.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RayProjector:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 14.6, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -0.5, 1.544, 1.6 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("RayProjector")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 14.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_ray_active"
+}, {
+"args": [ false ],
+"method": "set_ray_active"
+} ]
+}
+
+[node name="CircleTracingDemo" type="Node2D"]
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RMScene" parent="." instance=ExtResource( 2 )]
+
+[node name="RayProjector" type="Node2D" parent="."]
+position = Vector2( 127, 116 )
+rotation = -0.00872665
+script = ExtResource( 1 )
+stroke_color = Color( 1, 1, 1, 0.27451 )
+stroke_width = 1.1
+origin_size = 2.0
+max_steps = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "TraceAnim"
+anims/RESET = SubResource( 1 )
+anims/TraceAnim = SubResource( 2 )
